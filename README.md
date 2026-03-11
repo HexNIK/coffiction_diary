@@ -7,4 +7,8 @@
  * etc.
  ---
 
-![coffiction](img/Banner.svg)
+<div align="center">
+  <a href="https://git.io/streak-stats">
+    <img src="img/Banner.svg" alt="Coffiction Diary" />
+  </a>
+</div>
