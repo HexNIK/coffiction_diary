@@ -1,10 +1,15 @@
 # coffiction_diary
  
  [x] caffeine addiction diary
+ 
  [ ] blood pressure diary
+ 
  [ ] blood sugar diary
+ 
  [ ] pulse diary
+ 
  [ ] etc.
+ 
  ---
 
 ## system required
