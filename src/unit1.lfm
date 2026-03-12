@@ -1,0 +1,117 @@
+object MainForm: TMainForm
+  Left = 364
+  Height = 380
+  Top = 115
+  Width = 441
+  Caption = 'MainForm'
+  ClientHeight = 380
+  ClientWidth = 441
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object Panel2: TPanel
+    Left = 32
+    Height = 88
+    Top = 0
+    Width = 242
+    ClientHeight = 88
+    ClientWidth = 242
+    TabOrder = 7
+    object Label1: TLabel
+      Left = 16
+      Height = 17
+      Top = 8
+      Width = 28
+      Caption = 'Date'
+    end
+    object Label2: TLabel
+      Left = 133
+      Height = 17
+      Top = 8
+      Width = 29
+      Caption = 'Time'
+    end
+  end
+  object Panel1: TPanel
+    Left = 296
+    Height = 138
+    Top = 0
+    Width = 114
+    ClientHeight = 138
+    ClientWidth = 114
+    TabOrder = 6
+    object Label3: TLabel
+      Left = 16
+      Height = 17
+      Top = 12
+      Width = 79
+      Caption = 'Type of Drink'
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 17
+      Top = 88
+      Width = 30
+      Caption = 'Cups'
+    end
+  end
+  object edtDate: TDateEdit
+    Left = 39
+    Height = 28
+    Top = 36
+    Width = 103
+    CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+    DateOrder = doNone
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 0
+    Text = 'edtDate'
+  end
+  object edtTime: TTimeEdit
+    Left = 160
+    Height = 28
+    Top = 36
+    Width = 103
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 1
+    Text = 'edtTime'
+  end
+  object cbDrinkType: TComboBox
+    Left = 304
+    Height = 26
+    Top = 36
+    Width = 100
+    ItemHeight = 0
+    TabOrder = 2
+    Text = 'cbDrinkType'
+  end
+  object edtCups: TEdit
+    Left = 304
+    Height = 28
+    Top = 104
+    Width = 96
+    TabOrder = 3
+    Text = 'edtCups'
+  end
+  object btnAdd: TButton
+    Left = 256
+    Height = 25
+    Top = 104
+    Width = 35
+    Caption = '<<'
+    TabOrder = 4
+    OnClick = btnAddClick
+  end
+  object MemoLog: TMemo
+    Left = 38
+    Height = 263
+    Top = 104
+    Width = 194
+    Lines.Strings = (
+      'MemoLog'
+    )
+    TabOrder = 5
+  end
+end

@@ -1,0 +1,9 @@
+[Limits]
+MaxCoffee=2
+MaxBlackTea=2
+MaxGreenTea=2
+
+[Time]
+StartTime=06:00
+EndTime=14:00
+AbsoluteEndTime=16:00
