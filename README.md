@@ -21,11 +21,11 @@
 ## Checked on:
 - [x] OS AltLinux Simply p10.4, Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz, 16Gb RAM
  
-### Запуск с кастомным конфигом
+### Running with custom config:
 ```
 COFFEE_CONFIG=/home/user/mycoffee.cfg ./coffiction_diary
 ```
-### Или просто
+### Or simply:
 ```
 ./coffiction_diary
 ```
