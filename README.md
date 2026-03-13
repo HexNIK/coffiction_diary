@@ -22,11 +22,11 @@
  
 ### Запуск с кастомным конфигом
 ```
-COFFEE_CONFIG=/home/user/mycoffee.cfg ./project1
+COFFEE_CONFIG=/home/user/mycoffee.cfg ./coffiction_diary
 ```
 ### Или просто
 ```
-./project1
+./coffiction_diary
 ```
 
  ---
