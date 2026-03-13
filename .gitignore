@@ -1,0 +1,34 @@
+# Object files
+*.o
+*.ppu
+*.a
+*.or
+*.res
+*.compiled
+*.rst
+*.lfm.res
+*.dcu
+*.bak
+
+# Backup files
+*~
+*.~*
+*.backup
+*.orig
+
+# Directories
+lib/
+backup/
+bin/
+__history__
+
+# Project specific
+*.identcache
+*.local
+*.lps
+*.dsk
+
+# AppImage build
+AppDir/
+*.AppImage
+linuxdeploy-*.AppImage
