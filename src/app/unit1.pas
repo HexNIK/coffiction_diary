@@ -146,9 +146,10 @@ begin
   EntryTime := edtTime.Time;
   if (EntryTime < StartTime) or (EntryTime > AbsoluteEndTime) then
   begin
-    ShowMessage(Format('Время приема должно быть между %s и %s',
-      [TimeToStr(StartTime), TimeToStr(AbsoluteEndTime)]));
-    Exit;
+      if MessageDlg('Предупреждение',
+       Format('Время приема должно быть между %s и %s',[TimeToStr(StartTime), TimeToStr(AbsoluteEndTime)]),
+       mtWarning, [mbYes, mbNo], 0) = mrNo then
+      Exit;
   end;
 
   if (EntryTime > EndTime) and (EntryTime <= AbsoluteEndTime) then
@@ -167,19 +168,16 @@ begin
       if TodayTotal + Cups > MaxCoffee then
       begin
         ShowMessage(Format('Превышен дневной лимит кофе! Максимум: %d', [MaxCoffee]));
-        Exit;
       end;
     'black tea':
       if TodayTotal + Cups > MaxBlackTea then
       begin
         ShowMessage(Format('Превышен дневной лимит черного чая! Максимум: %d', [MaxBlackTea]));
-        Exit;
       end;
     'green tea':
       if TodayTotal + Cups > MaxGreenTea then
       begin
         ShowMessage(Format('Превышен дневной лимит зеленого чая! Максимум: %d', [MaxGreenTea]));
-        Exit;
       end;
   end;
 
