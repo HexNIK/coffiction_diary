@@ -93,7 +93,6 @@ object MainForm: TMainForm
     Top = 104
     Width = 96
     TabOrder = 3
-    Text = 'edtCups'
   end
   object btnAdd: TButton
     Left = 256
@@ -109,9 +108,6 @@ object MainForm: TMainForm
     Height = 263
     Top = 104
     Width = 194
-    Lines.Strings = (
-      'MemoLog'
-    )
     TabOrder = 5
   end
 end
