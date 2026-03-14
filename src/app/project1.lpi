@@ -12,7 +12,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="19"/>
+      <BuildNr Value="21"/>
       <StringTable Comments="https://github.com/HexNIK" CompanyName="HexNIK" OriginalFilename="coffiction_diary" ProductName="Coffiction Diary" ProductVersion="1"/>
     </VersionInfo>
     <BuildModes>
@@ -58,12 +58,6 @@
         </CompilerOptions>
       </Item>
       <Item Name="Release">
-        <MacroValues Count="4">
-          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
-          <Macro2 Name="LCLWidgetType" Value="gtk2"/>
-          <Macro3 Name="LCLWidgetType" Value="gtk2"/>
-          <Macro4 Name="LCLWidgetType" Value="gtk2"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -194,4 +188,17 @@
       <CustomOptions Value="-Fr/usr/lib64/fpc/msg/errore.msg"/>
     </Other>
   </CompilerOptions>
+  <Debugging>
+    <Exceptions>
+      <Item>
+        <Name Value="EAbort"/>
+      </Item>
+      <Item>
+        <Name Value="ECodetoolError"/>
+      </Item>
+      <Item>
+        <Name Value="EFOpenError"/>
+      </Item>
+    </Exceptions>
+  </Debugging>
 </CONFIG>
