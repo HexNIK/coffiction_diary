@@ -1,39 +1,30 @@
-# Makefile для coffiction_diary
 .PHONY: all clean linux win64 release debug distclean info
 
-# Имена проектных файлов
 PROJECT_NAME = project1
 BINARY_NAME = coffiction_diary
 PROJECT_LPR = src/app/$(PROJECT_NAME).lpr
 PROJECT_LPI = src/app/$(PROJECT_NAME).lpi
 
-# Директории
 SRC_DIR = src
 DIST_DIR = dist
 LINUX_DIR = $(DIST_DIR)/linux
 WINDOWS_DIR = $(DIST_DIR)/windows
 LIB_DIR = lib
 
-# Инструменты
 LAZBUILD = lazbuild
 FPC = fpc
 
-# ------------------------------------------------------------
-# ПУТИ ДЛЯ ALT LINUX p10 (ИЗ ТВОЕЙ СИСТЕМЫ)
-# ------------------------------------------------------------
 LAZARUS_DIR = /usr/lib64/lazarus
 LCL_BASE_DIR = $(LAZARUS_DIR)/lcl/units/x86_64-linux
 LCL_GTK2_DIR = $(LAZARUS_DIR)/lcl/units/x86_64-linux/gtk2
 PACKAGER_DIR = $(LAZARUS_DIR)/packager/units/x86_64-linux
 LAZUTILS_DIR = $(LAZARUS_DIR)/components/lazutils/lib/x86_64-linux
 
-# Проверка существования путей (для информации)
 $(info LCL_BASE_DIR: $(LCL_BASE_DIR))
 $(info LCL_GTK2_DIR: $(LCL_GTK2_DIR))
 $(info PACKAGER_DIR: $(PACKAGER_DIR))
 $(info LAZUTILS_DIR: $(LAZUTILS_DIR))
 
-# Пути к модулям проекта
 PROJECT_UNITS = -Fu$(SRC_DIR)/app \
                 -Fu$(SRC_DIR)/core \
                 -Fu$(SRC_DIR)/core/database \
@@ -41,22 +32,17 @@ PROJECT_UNITS = -Fu$(SRC_DIR)/app \
                 -Fu$(SRC_DIR)/forms \
                 -Fu$(SRC_DIR)/gui
 
-# Пути к модулям Lazarus
 LAZARUS_UNITS = -Fu$(LCL_BASE_DIR) \
                 -Fu$(LCL_GTK2_DIR) \
                 -Fu$(PACKAGER_DIR) \
                 -Fu$(LAZUTILS_DIR)
 
-# Флаги компиляции из твоего Release режима
 RELEASE_FLAGS = -O3 -XX -Xs -CX -Sg -MObjFPC -Scghi -Cg \
                 -k-Bstatic -k-static \
                 -dLCL -dLCLgtk2 \
                 -Fu/usr/lib64/fpc/3.2.2/units/x86_64-linux/* \
                 -Fr/usr/lib64/fpc/msg/errore.msg
 
-# ------------------------------------------------------------
-# Сборка через lazbuild (теперь должен работать)
-# ------------------------------------------------------------
 linux-release: | $(LINUX_DIR)
 	@echo "Сборка Linux Release через lazbuild..."
 	cd src/app && $(LAZBUILD) --build-mode=Release \
@@ -64,25 +50,22 @@ linux-release: | $(LINUX_DIR)
 	@# Ищем бинарник в разных местах
 	@if [ -f src/app/$(BINARY_NAME) ]; then \
 	  cp src/app/$(BINARY_NAME) $(LINUX_DIR)/; \
-	  echo "✅ Бинарник скопирован из src/app/$(BINARY_NAME)"; \
+	  echo "Ok! Бинарник скопирован из src/app/$(BINARY_NAME)"; \
 	elif [ -f src/app/bin/linux/release/x86_64-linux/$(BINARY_NAME) ]; then \
 	  cp src/app/bin/linux/release/x86_64-linux/$(BINARY_NAME) $(LINUX_DIR)/; \
-	  echo "✅ Бинарник скопирован из src/app/bin/..."; \
+	  echo "Ok! Бинарник скопирован из src/app/bin/..."; \
 	elif [ -f src/app/project1 ]; then \
 	  cp src/app/project1 $(LINUX_DIR)/$(BINARY_NAME); \
-	  echo "✅ Бинарник project1 переименован в $(BINARY_NAME)"; \
+	  echo "Ok! Бинарник project1 переименован в $(BINARY_NAME)"; \
 	else \
-	  echo "❌ Бинарник не найден!"; \
+	  echo "Fail! Бинарник не найден!"; \
 	  find src/app -name '$(BINARY_NAME)' -o -name 'project1' -type f; \
 	  exit 1; \
 	fi
 	@chmod +x $(LINUX_DIR)/$(BINARY_NAME)
-	@echo "✅ Linux Release собран: $(LINUX_DIR)/$(BINARY_NAME)"
+	@echo "Ok! Linux Release собран: $(LINUX_DIR)/$(BINARY_NAME)"
 	@echo "Запусти его: $(LINUX_DIR)/$(BINARY_NAME)"
 
-# ------------------------------------------------------------
-# Сборка через fpc (гарантированно работает с нашими путями) FIXME! NOT WORK!
-# ------------------------------------------------------------
 linux-fpc: | $(LINUX_DIR)
 	@echo "Сборка Linux через fpc..."
 	@echo "Используемые пути:"
@@ -92,52 +75,44 @@ linux-fpc: | $(LINUX_DIR)
 	@echo "  LazUtils: $(LAZUTILS_DIR)"
 	@# Проверяем наличие ключевого модуля
 	@if [ ! -f $(LCL_GTK2_DIR)/interfaces.ppu ]; then \
-	  echo "❌ ОШИБКА: interfaces.ppu не найден!"; \
+	  echo "Fail! ОШИБКА: interfaces.ppu не найден!"; \
 	  exit 1; \
 	fi
 	cd src/app && $(FPC) $(RELEASE_FLAGS) $(PROJECT_UNITS) $(LAZARUS_UNITS) \
-	  -FE../../../$(LINUX_DIR) -FU../../../$(LIB_DIR)/linux $(PROJECT_LPR)
+	  -FE../../$(LINUX_DIR)  $(PROJECT_LPR)
 	@if [ -f $(LINUX_DIR)/$(PROJECT_NAME) ]; then \
 	  mv $(LINUX_DIR)/$(PROJECT_NAME) $(LINUX_DIR)/$(BINARY_NAME); \
-	  echo "✅ Бинарник переименован"; \
+	  echo "Fail! Бинарник переименован"; \
 	fi
 	@chmod +x $(LINUX_DIR)/$(BINARY_NAME)
-	@echo "✅ Linux (fpc) собран: $(LINUX_DIR)/$(BINARY_NAME)"
+	@echo "Fail! Linux (fpc) собран: $(LINUX_DIR)/$(BINARY_NAME)"
 
-# ------------------------------------------------------------
-# Кросс-компиляция для Windows
-# ------------------------------------------------------------
 win64: | $(WINDOWS_DIR)
 	@echo "Сборка Windows через кросс-компиляцию..."
 	@# Проверяем наличие кросс-компилятора
 	@if ! command -v ppcrossx64 >/dev/null 2>&1; then \
-	  echo "❌ ppcrossx64 не найден. Установи:"; \
+	  echo "Fail! ppcrossx64 не найден. Установи:"; \
 	  echo "  sudo apt-get install fpc-cross-win64"; \
 	  exit 1; \
 	fi
 	cd src/app && ppcrossx64 $(RELEASE_FLAGS) $(PROJECT_UNITS) \
 	  -Twin64 -Px86_64 \
-	  -FE../../../$(WINDOWS_DIR) -FU../../../$(LIB_DIR)/win64 $(PROJECT_LPR)
+	  -FE../../../$(WINDOWS_DIR) $(PROJECT_LPR)
 	@if [ -f $(WINDOWS_DIR)/$(PROJECT_NAME).exe ]; then \
 	  mv $(WINDOWS_DIR)/$(PROJECT_NAME).exe $(WINDOWS_DIR)/$(BINARY_NAME).exe; \
 	fi
-	@echo "✅ Windows собран: $(WINDOWS_DIR)/$(BINARY_NAME).exe"
+	@echo "Ok! Windows собран: $(WINDOWS_DIR)/$(BINARY_NAME).exe"
 
-# ------------------------------------------------------------
-# Основные цели
-# ------------------------------------------------------------
 all: linux-fpc  # Пока используем fpc как наиболее надежный
 linux: linux-fpc
 release: linux-fpc win64
 
-# Создание директорий
 $(LINUX_DIR):
 	mkdir -p $(LINUX_DIR)
 
 $(WINDOWS_DIR):
 	mkdir -p $(WINDOWS_DIR)
 
-# Очистка
 clean:
 	rm -rf $(LIB_DIR)/
 	find . -name '*.o' -delete
@@ -147,15 +122,12 @@ clean:
 	find src/app -name '$(BINARY_NAME)' -type f -delete
 	find src/app -name 'project1' -type f -delete
 	find src/app -name '*.exe' -type f -delete
-	@echo "✅ Проект очищен"
+	@echo "Ok! Проект очищен"
 
 distclean: clean
 	rm -rf $(DIST_DIR)/
-	@echo "✅ Все артефакты удалены"
+	@echo "Ok! Все артефакты удалены"
 
-# ------------------------------------------------------------
-# Информация
-# ------------------------------------------------------------
 info:
 	@echo "=== Информация о проекте ==="
 	@echo "Project LPI: $(PROJECT_LPI)"
@@ -165,11 +137,11 @@ info:
 	@ls -la src/app/ | grep -E "\.(lpi|lpr|pas|lfm)"
 	@echo ""
 	@echo "=== Проверка путей Lazarus ==="
-	@echo "LCL_BASE_DIR: $(LCL_BASE_DIR) -> $$(if [ -d $(LCL_BASE_DIR) ]; then echo '✅'; else echo '❌'; fi)"
-	@echo "LCL_GTK2_DIR: $(LCL_GTK2_DIR) -> $$(if [ -d $(LCL_GTK2_DIR) ]; then echo '✅'; else echo '❌'; fi)"
-	@echo "PACKAGER_DIR: $(PACKAGER_DIR) -> $$(if [ -d $(PACKAGER_DIR) ]; then echo '✅'; else echo '❌'; fi)"
-	@echo "LAZUTILS_DIR: $(LAZUTILS_DIR) -> $$(if [ -d $(LAZUTILS_DIR) ]; then echo '✅'; else echo '❌'; fi)"
+	@echo "LCL_BASE_DIR: $(LCL_BASE_DIR) -> $$(if [ -d $(LCL_BASE_DIR) ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
+	@echo "LCL_GTK2_DIR: $(LCL_GTK2_DIR) -> $$(if [ -d $(LCL_GTK2_DIR) ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
+	@echo "PACKAGER_DIR: $(PACKAGER_DIR) -> $$(if [ -d $(PACKAGER_DIR) ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
+	@echo "LAZUTILS_DIR: $(LAZUTILS_DIR) -> $$(if [ -d $(LAZUTILS_DIR) ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
 	@echo ""
 	@echo "=== Наличие ключевых модулей ==="
-	@echo "interfaces.ppu: $$(if [ -f $(LCL_GTK2_DIR)/interfaces.ppu ]; then echo '✅'; else echo '❌'; fi)"
-	@echo "forms.ppu: $$(if [ -f $(LCL_BASE_DIR)/forms.ppu ]; then echo '✅'; else echo '❌'; fi)"
+	@echo "interfaces.ppu: $$(if [ -f $(LCL_GTK2_DIR)/interfaces.ppu ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
+	@echo "forms.ppu: $$(if [ -f $(LCL_BASE_DIR)/forms.ppu ]; then echo 'Ok!'; else echo 'Fail!'; fi)"
