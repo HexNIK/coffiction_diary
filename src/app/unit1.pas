@@ -21,6 +21,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     MemoLog: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;

@@ -109,4 +109,13 @@ object MainForm: TMainForm
     Width = 194
     TabOrder = 5
   end
+  object Label5: TLabel
+    Left = 248
+    Height = 17
+    Top = 350
+    Width = 186
+    Caption = 'coffiction diary by HexNIK 2026'
+    Color = clGreen
+    ParentColor = False
+  end
 end
