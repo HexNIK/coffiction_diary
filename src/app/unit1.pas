@@ -15,6 +15,8 @@ type
   TMainForm = class(TForm)
     btnAdd: TButton;
     cbDrinkType: TComboBox;
+    AD: TEdit;
+    ChBox_AD_add: TCheckBox;
     edtDate: TDateEdit;
     edtCups: TEdit;
     Label1: TLabel;
@@ -22,12 +24,14 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
     MemoLog: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
     edtTime: TTimeEdit;
     procedure btnAddClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Label6Click(Sender: TObject);
     procedure LoadConfig;
     function ValidateEntry:Boolean;
     function GetTodayTotal(drinkType: string): Integer;
@@ -77,8 +81,15 @@ begin
   cbDrinkType.Items.Add('green tea');
   cbDrinkType.ItemIndex := 0;
 
+
+
   if FileExists(DataFile) then
     MemoLog.Lines.LoadFromFile(DataFile);
+end;
+
+procedure TMainForm.Label6Click(Sender: TObject);
+begin
+
 end;
 
 procedure TMainForm.LoadConfig;
@@ -241,6 +252,7 @@ procedure TMainForm.SaveEntry;
 var
   LogFile: TextFile;
   LogLine: string;
+  ad_text:string;
 begin
   AssignFile(LogFile, DataFile);
 
@@ -250,11 +262,15 @@ begin
     Rewrite(LogFile);
 
   try
-    LogLine := Format('[%s %s] : %s %s',
+       if(AD.Text <> '') then
+          ad_text:=AD.Text
+       else
+         ad_text := '';
+    LogLine := Format('[%s %s] : %s %s, Pressure: %s',
       [FormatDateTime('DD-MM-YYYY', edtDate.Date),
        FormatDateTime('HH:NN', edtTime.Time),
        edtCups.Text,
-       cbDrinkType.Text]);
+       cbDrinkType.Text, ad_text]);
 
     WriteLn(LogFile, LogLine);
     MemoLog.Lines.Add(LogLine);
