@@ -9,23 +9,28 @@ LazarusResources.Add('TMainForm','FORMDATA',[
   +'bel1'#4'Left'#2#16#6'Height'#2#17#3'Top'#2#8#5'Width'#2#28#7'Caption'#6#4'D'
   +'ate'#0#0#6'TLabel'#6'Label2'#4'Left'#3#133#0#6'Height'#2#17#3'Top'#2#8#5'Wi'
   +'dth'#2#29#7'Caption'#6#4'Time'#0#0#0#6'TPanel'#6'Panel1'#4'Left'#3'('#1#6'H'
-  +'eight'#3#138#0#3'Top'#2#0#5'Width'#2'r'#12'ClientHeight'#3#138#0#11'ClientW'
+  +'eight'#3#194#0#3'Top'#2#0#5'Width'#2'r'#12'ClientHeight'#3#194#0#11'ClientW'
   +'idth'#2'r'#8'TabOrder'#2#6#0#6'TLabel'#6'Label3'#4'Left'#2#16#6'Height'#2#17
   +#3'Top'#2#12#5'Width'#2'O'#7'Caption'#6#13'Type of Drink'#0#0#6'TLabel'#6'La'
   +'bel4'#4'Left'#2#16#6'Height'#2#17#3'Top'#2'X'#5'Width'#2#30#7'Caption'#6#4
-  +'Cups'#0#0#0#9'TDateEdit'#7'edtDate'#4'Left'#2''''#6'Height'#2#28#3'Top'#2'$'
-  +#5'Width'#2'g'#23'CalendarDisplaySettings'#11#14'dsShowHeadings'#14'dsShowDa'
-  +'yNames'#0#9'DateOrder'#7#6'doNone'#11'ButtonWidth'#2#23#9'NumGlyphs'#2#1#9
-  +'MaxLength'#2#0#8'TabOrder'#2#0#4'Text'#6#7'edtDate'#0#0#9'TTimeEdit'#7'edtT'
-  +'ime'#4'Left'#3#160#0#6'Height'#2#28#3'Top'#2'$'#5'Width'#2'g'#11'ButtonWidt'
-  +'h'#2#23#9'NumGlyphs'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#1#4'Text'#6#7'edtTi'
-  +'me'#0#0#9'TComboBox'#11'cbDrinkType'#4'Left'#3'0'#1#6'Height'#2#26#3'Top'#2
-  +'$'#5'Width'#2'd'#10'ItemHeight'#2#0#8'TabOrder'#2#2#0#0#5'TEdit'#7'edtCups'
-  +#4'Left'#3'0'#1#6'Height'#2#28#3'Top'#2'h'#5'Width'#2'`'#8'TabOrder'#2#3#0#0
-  +#7'TButton'#6'btnAdd'#4'Left'#3#0#1#6'Height'#2#25#3'Top'#2'h'#5'Width'#2'#'
-  +#7'Caption'#6#2'<<'#8'TabOrder'#2#4#7'OnClick'#7#11'btnAddClick'#0#0#5'TMemo'
-  +#7'MemoLog'#4'Left'#2'&'#6'Height'#3#7#1#3'Top'#2'h'#5'Width'#3#194#0#8'TabO'
-  +'rder'#2#5#0#0#6'TLabel'#6'Label5'#4'Left'#3#248#0#6'Height'#2#17#3'Top'#3'^'
-  +#1#5'Width'#3#186#0#7'Caption'#6#31'coffiction diary by HexNIK 2026'#5'Color'
-  +#7#7'clGreen'#11'ParentColor'#8#0#0#0
+  +'Cups'#0#0#5'TEdit'#2'AD'#4'Left'#2#8#6'Height'#2#28#3'Top'#3#159#0#5'Width'
+  +#2'`'#8'TabOrder'#2#0#4'Text'#6#2'AD'#0#0#6'TLabel'#6'Label6'#4'Left'#2#11#6
+  +'Height'#2#17#3'Top'#3#144#0#5'Width'#2'4'#7'Caption'#6#8'Pressure'#7'OnClic'
+  +'k'#7#11'Label6Click'#0#0#0#9'TDateEdit'#7'edtDate'#4'Left'#2''''#6'Height'#2
+  +#28#3'Top'#2'$'#5'Width'#2'g'#23'CalendarDisplaySettings'#11#14'dsShowHeadin'
+  +'gs'#14'dsShowDayNames'#0#9'DateOrder'#7#6'doNone'#11'ButtonWidth'#2#23#9'Nu'
+  +'mGlyphs'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#0#4'Text'#6#7'edtDate'#0#0#9'TT'
+  +'imeEdit'#7'edtTime'#4'Left'#3#160#0#6'Height'#2#28#3'Top'#2'$'#5'Width'#2'g'
+  +#11'ButtonWidth'#2#23#9'NumGlyphs'#2#1#9'MaxLength'#2#0#8'TabOrder'#2#1#4'Te'
+  +'xt'#6#7'edtTime'#0#0#9'TComboBox'#11'cbDrinkType'#4'Left'#3'0'#1#6'Height'#2
+  +#26#3'Top'#2'$'#5'Width'#2'd'#10'ItemHeight'#2#0#8'TabOrder'#2#2#0#0#5'TEdit'
+  +#7'edtCups'#4'Left'#3'0'#1#6'Height'#2#28#3'Top'#2'h'#5'Width'#2'`'#8'TabOrd'
+  +'er'#2#3#0#0#7'TButton'#6'btnAdd'#4'Left'#3#0#1#6'Height'#2#25#3'Top'#2'h'#5
+  +'Width'#2'#'#7'Caption'#6#2'<<'#8'TabOrder'#2#4#7'OnClick'#7#11'btnAddClick'
+  +#0#0#5'TMemo'#7'MemoLog'#4'Left'#2'&'#6'Height'#3#7#1#3'Top'#2'h'#5'Width'#3
+  +#194#0#8'TabOrder'#2#5#0#0#6'TLabel'#6'Label5'#4'Left'#3#248#0#6'Height'#2#17
+  +#3'Top'#3'^'#1#5'Width'#3#186#0#7'Caption'#6#31'coffiction diary by HexNIK 2'
+  +'026'#5'Color'#7#7'clGreen'#11'ParentColor'#8#0#0#9'TCheckBox'#12'ChBox_AD_a'
+  +'dd'#4'Left'#3'('#1#6'Height'#2#24#3'Top'#3#200#0#5'Width'#2'V'#7'Caption'#6
+  +#10'add to log'#8'TabOrder'#2#8#0#0#0
 ]);
