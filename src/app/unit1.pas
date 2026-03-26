@@ -149,7 +149,7 @@ var
 begin
   Result := False;
 
-  if not TryStrToInt(edtCups.Text, Cups) or (Cups <= 0) then
+  if not TryStrToInt(edtCups.Text, Cups) or (Cups < 0) then
   begin
     ShowMessage('Введите корректное количество чашек');
     Exit;
@@ -253,6 +253,9 @@ var
   LogFile: TextFile;
   LogLine: string;
   ad_text:string;
+  cups: integer;
+  cups_txt: string;
+  drink_type: string;
 begin
   AssignFile(LogFile, DataFile);
 
@@ -262,15 +265,27 @@ begin
     Rewrite(LogFile);
 
   try
-       if(AD.Text <> '') then
-          ad_text:=AD.Text
+       if((AD.Text <> '') AND (ChBox_AD_add.Checked = TRUE)) then
+          ad_text:= 'Pressure:' + AD.Text
        else
          ad_text := '';
-    LogLine := Format('[%s %s] : %s %s, Pressure: %s',
+       cups:= StrToInt(edtCups.Text);
+       if (cups = 0) then
+         begin
+           cups_txt := '';
+           drink_type := ''
+         end
+       else
+         begin
+           cups_txt := edtCups.Text;
+           drink_type := cbDrinkType.Text;
+         end;
+    LogLine := Format('[%s %s] : %s %s %s',
       [FormatDateTime('DD-MM-YYYY', edtDate.Date),
        FormatDateTime('HH:NN', edtTime.Time),
-       edtCups.Text,
-       cbDrinkType.Text, ad_text]);
+       cups_txt,
+       drink_type,
+       ad_text]);
 
     WriteLn(LogFile, LogLine);
     MemoLog.Lines.Add(LogLine);

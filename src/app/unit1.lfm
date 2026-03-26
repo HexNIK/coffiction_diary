@@ -1,11 +1,11 @@
 object MainForm: TMainForm
   Left = 364
-  Height = 380
+  Height = 375
   Top = 115
-  Width = 441
+  Width = 514
   Caption = 'MainForm'
-  ClientHeight = 380
-  ClientWidth = 441
+  ClientHeight = 375
+  ClientWidth = 514
   OnCreate = FormCreate
   LCLVersion = '3.6.0.0'
   object Panel2: TPanel
@@ -32,7 +32,7 @@ object MainForm: TMainForm
     end
   end
   object Panel1: TPanel
-    Left = 296
+    Left = 368
     Height = 194
     Top = 0
     Width = 114
@@ -59,7 +59,6 @@ object MainForm: TMainForm
       Top = 159
       Width = 96
       TabOrder = 0
-      Text = 'AD'
     end
     object Label6: TLabel
       Left = 11
@@ -95,7 +94,7 @@ object MainForm: TMainForm
     Text = 'edtTime'
   end
   object cbDrinkType: TComboBox
-    Left = 304
+    Left = 376
     Height = 26
     Top = 36
     Width = 100
@@ -103,14 +102,15 @@ object MainForm: TMainForm
     TabOrder = 2
   end
   object edtCups: TEdit
-    Left = 304
+    Left = 376
     Height = 28
     Top = 104
     Width = 96
     TabOrder = 3
+    Text = '0'
   end
   object btnAdd: TButton
-    Left = 256
+    Left = 328
     Height = 25
     Top = 104
     Width = 35
@@ -119,14 +119,15 @@ object MainForm: TMainForm
     OnClick = btnAddClick
   end
   object MemoLog: TMemo
-    Left = 38
+    Left = 32
     Height = 263
     Top = 104
-    Width = 194
+    Width = 248
+    ScrollBars = ssVertical
     TabOrder = 5
   end
   object Label5: TLabel
-    Left = 248
+    Left = 288
     Height = 17
     Top = 350
     Width = 186
@@ -135,7 +136,7 @@ object MainForm: TMainForm
     ParentColor = False
   end
   object ChBox_AD_add: TCheckBox
-    Left = 296
+    Left = 368
     Height = 24
     Top = 200
     Width = 86
