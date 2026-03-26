@@ -3,7 +3,7 @@
  
 - [x] caffeine addiction diary
  
-- [ ] blood pressure diary
+- [x] blood pressure diary
  
 - [ ] blood sugar diary
  
