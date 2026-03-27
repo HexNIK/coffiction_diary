@@ -2,10 +2,10 @@ object MainForm: TMainForm
   Left = 364
   Height = 375
   Top = 115
-  Width = 514
+  Width = 582
   Caption = 'MainForm'
   ClientHeight = 375
-  ClientWidth = 514
+  ClientWidth = 582
   OnCreate = FormCreate
   LCLVersion = '3.6.0.0'
   object Panel2: TPanel
@@ -32,11 +32,11 @@ object MainForm: TMainForm
     end
   end
   object Panel1: TPanel
-    Left = 368
-    Height = 194
+    Left = 448
+    Height = 256
     Top = 0
     Width = 114
-    ClientHeight = 194
+    ClientHeight = 256
     ClientWidth = 114
     TabOrder = 6
     object Label3: TLabel
@@ -68,6 +68,20 @@ object MainForm: TMainForm
       Caption = 'Pressure'
       OnClick = Label6Click
     end
+    object Glukoza: TEdit
+      Left = 8
+      Height = 28
+      Top = 208
+      Width = 96
+      TabOrder = 1
+    end
+    object Label7: TLabel
+      Left = 11
+      Height = 17
+      Top = 192
+      Width = 48
+      Caption = 'Glukoza'
+    end
   end
   object edtDate: TDateEdit
     Left = 39
@@ -94,7 +108,7 @@ object MainForm: TMainForm
     Text = 'edtTime'
   end
   object cbDrinkType: TComboBox
-    Left = 376
+    Left = 456
     Height = 26
     Top = 36
     Width = 100
@@ -102,7 +116,7 @@ object MainForm: TMainForm
     TabOrder = 2
   end
   object edtCups: TEdit
-    Left = 376
+    Left = 456
     Height = 28
     Top = 104
     Width = 96
@@ -110,7 +124,7 @@ object MainForm: TMainForm
     Text = '0'
   end
   object btnAdd: TButton
-    Left = 328
+    Left = 408
     Height = 25
     Top = 104
     Width = 35
@@ -136,11 +150,19 @@ object MainForm: TMainForm
     ParentColor = False
   end
   object ChBox_AD_add: TCheckBox
-    Left = 368
+    Left = 352
     Height = 24
-    Top = 200
+    Top = 160
     Width = 86
     Caption = 'add to log'
     TabOrder = 8
+  end
+  object CheckBox1: TCheckBox
+    Left = 352
+    Height = 24
+    Top = 216
+    Width = 91
+    Caption = 'CheckBox1'
+    TabOrder = 9
   end
 end

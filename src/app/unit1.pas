@@ -17,6 +17,8 @@ type
     cbDrinkType: TComboBox;
     AD: TEdit;
     ChBox_AD_add: TCheckBox;
+    CheckBox1: TCheckBox;
+    Glukoza: TEdit;
     edtDate: TDateEdit;
     edtCups: TEdit;
     Label1: TLabel;
@@ -25,6 +27,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
     MemoLog: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
